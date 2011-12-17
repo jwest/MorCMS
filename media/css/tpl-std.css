@@ -1,0 +1,215 @@
+.tpl-bg1{ background-color: #eee; }
+.tpl-bg2{ background-color: #fff; }
+
+/*---GRID DATA SHOW---*/
+
+table.tpl{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.tpl a{
+  color: #551A8B;
+}
+
+table.tpl a:hover{
+  color: #000;
+}
+
+table.tpl a.button{
+    background: none !important;
+    border: none;
+    color: #000;
+    margin: 0;
+    padding: 0;
+} 
+    
+table.tpl thead th{
+  color: #000;
+  font-weight: bold;
+  padding: 10px;            
+  text-shadow: #fff 1px 1px 1px; 
+}
+
+table.tpl thead .filter{
+  display: none;
+}
+
+table.tpl thead .filter th{
+  height: 35px;
+  background-color: #CCC;
+  border-top: 1px solid #AAA;
+  border-bottom: 1px solid #AAA;
+  padding: 3px 0;
+}
+
+table.tpl thead .filter th input,
+table.tpl thead .filter th select{
+  border: 1px solid #aaa;
+  width: inherit;
+}
+
+table.tpl thead .filters td select{
+  width: 90%;
+} 
+
+table.tpl tbody tr td:first-child, table.tpl thead tr th:first-child, table.tpl thead tr td:first-child{
+  padding-left: 30px;
+}
+
+table.tpl tbody td{
+  border-top: 1px solid #ccc;
+}
+
+table.tpl tbody td{
+  padding: 10px;
+}
+
+table.tpl tbody td img{
+  max-width: 16px;
+  max-height: 16px;
+}
+
+table.tpl tbody td.main{
+    font-weight: bold;  
+}
+
+table.tpl tbody tr.tpl-bg1 td.main{
+    background-color: #e7e7e7;
+}
+
+table.tpl tbody tr.tpl-bg2 td.main{
+    background-color: #f7f7f7;
+}
+
+table.tpl tbody tr:hover{
+  background-color: #ff9 !important;
+}
+
+/*---CREATE DATA (FORM)---*/
+form.tpl{
+    display: block;
+    margin: 0 20px; 
+}
+
+form.tpl div.aside{
+    float: right;
+    width: 250px;
+    overflow: hidden;
+}
+
+form.tpl div.aside input, form.tpl div.aside select, form.tpl div.aside textarea{
+    padding: 10px;
+    border: 1px solid #aaa;
+    width: 100%;
+}
+
+form.tpl div.aside input[type="submit"]{
+    width: auto;
+}
+
+form.tpl div.aside .buttons{
+    text-align:center;
+}
+
+form.tpl div.aside img, form.tpl div.box img{
+    max-width: 250px;
+}
+
+form.tpl div.box > div > div.main input, 
+form.tpl div.box > div > div.main select, 
+form.tpl div.box > div > div.main textarea{
+    padding: 10px;
+    border: 1px solid #aaa;
+    width: 100%;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+form.tpl div.box > div{
+    background-color: #ddd;
+    padding: 3px;
+    margin: 5px 0;
+}
+
+form.tpl div.box > div > div{
+    padding: 0;
+    margin: 5px 0;
+}
+
+form.tpl .box > div > .main input, 
+form.tpl .box > div > .main textarea, 
+form.tpl .box > div > .main select{
+    width: 100%;
+}
+
+form.tpl .box > div > .default input, 
+form.tpl .box > div > .default textarea, 
+form.tpl .box > div > .default select{
+    float: left;
+    width: 50%;
+}
+
+form.tpl .box{
+    padding: 0 5px;
+    overflow: hidden;
+}
+
+form.tpl .main > div > .default div.label{
+    float: left;    
+    display: block;
+    padding: 0;
+}
+
+form.tpl .default .label span{
+    display: block;
+    
+}
+
+form.tpl .default .label{
+    border-left: 1px solid #aaa;
+    margin-left: 51%;
+    padding-left: 1%;
+}
+
+/*
+
+form.tpl > div{
+    background-color: #ddd;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+form.tpl > div > div{
+    padding: 0;
+    margin: 0;
+}
+
+form.tpl .main input, form.tpl .main textarea, form.tpl .main select{
+    width: 50%;
+}
+
+form.tpl .full input, form.tpl .full textarea, form.tpl .full select{
+    width: 100%;
+}
+
+form.tpl .full input[type="text"]{
+    font-weight: bold;
+    font-size: 20px;
+}
+*/
+
+/*----FORM----*/
+form.tpl input, form.tpl select, form.tpl textarea{
+    padding: 10px;
+    border: 1px solid #aaa;
+}
+
+form.tpl div.buttons{
+    text-align: right;
+}
+
+form.tpl .buttons{
+    clear: both;        
+    padding-top: 20px
+}
