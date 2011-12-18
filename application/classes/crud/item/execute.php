@@ -124,6 +124,16 @@ abstract class CRUD_Item_Execute
      * Check if item is editable
      * @return bool
      */
+    public function is_notnull()
+    {
+        return ($this->item['notnull']);
+    }
+    
+    
+    /**
+     * Check if item is editable
+     * @return bool
+     */
     public function is_filter()
     {
         return ($this->item['filter']);

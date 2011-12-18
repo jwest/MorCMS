@@ -134,9 +134,17 @@ abstract class Model_CRUD extends ORM
             
             $this->pagination = new Pagination($config);
             
-            $this->order_by('id','DESC')
-                ->limit($this->pagination->items_per_page)
-                ->offset($this->pagination->offset);           
+            $this->limit($this->pagination->items_per_page)
+                 ->offset($this->pagination->offset);           
+        }
+        
+        if($this->sortable)
+        {
+            $this->order_by('sort');
+        }
+        else
+        {
+            $this->order_by('id','DESC');
         }
         
         if(!empty($this->filters))
@@ -403,7 +411,7 @@ abstract class Model_CRUD extends ORM
         
         foreach ($rows as $sort => $id)
         {				
-            $row = $this->where('id', '=', $id)->find();
+            $row = ORM::factory($this->object_name())->where('id', '=', $id)->find();
             $row->sort = $sort;
             $row->save();
         }
@@ -420,6 +428,16 @@ abstract class Model_CRUD extends ORM
     public function add_filter($name, $param)
     {
         $this->filters[$name] = $param;
+    }
+    
+    
+    /**
+     * Model is sortable in controller
+     * @return bool
+     */
+    public function is_sortable()
+    {
+        return (bool) $this->sortable;
     }
     
     

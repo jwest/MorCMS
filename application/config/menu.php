@@ -3,12 +3,19 @@
 //configuration menu in admin panel (per role)
 return array(
     
+    'author' => array(
+        
+        'pages' => 'admin/pages/',  
+        'menu' => 'admin/menu/',      
+        'back to site' => null,
+        
+    ),
+    
     'admin' => array(
         
         'pages' => 'admin/pages/',
         'menu' => 'admin/menu/',
         'users' => 'admin/users/',
-        'items' => 'admin/items/',
         'stats' => 'admin/stats',
         'back to site' => null,
         

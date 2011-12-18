@@ -24,6 +24,7 @@ class CRUD_Item_Execute_Options extends CRUD_Item_Execute
                 $options[$option] = $option;
             }            
         }
+        
         // if no exists you use enum values from database
         else
         {
@@ -67,6 +68,24 @@ class CRUD_Item_Execute_Options extends CRUD_Item_Execute
     }
     
     
+    /**
+     * If values is yes/no
+     * @param string $value
+     * @return string
+     */
+    public function on_show($value)
+    {        
+        if(isset($this->item['yesno']))
+        {
+            return HTML::image('media/gfx/'.$value.'.png');
+        }
+        else
+        {
+            return $value;
+        }
+    }
+
+
 }
 
 ?>

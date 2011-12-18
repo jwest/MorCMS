@@ -83,6 +83,7 @@ abstract class Controller_Admin_CRUD extends Controller_System_Admin
         $view->columns = $this->model->get_items();
         $view->base_controller = $this->base_controller;
         $view->pagination = null;
+        $view->sortable = $this->model->is_sortable();
 
         if($this->model->render_pagination())
         {
@@ -147,8 +148,24 @@ abstract class Controller_Admin_CRUD extends Controller_System_Admin
         $view->base_controller = $this->base_controller;
         $view->name = $this->controller_name;
         $view->data = $this->model->get_for_create();
-        $view->columns = $this->model->get_items();
+        $view->columns = (object)array
+        (
+            'left' => array(), 
+            'right' => array()
+        );
 
+        foreach($this->model->get_items() as $name => $column)
+        {
+            if($column->is_edit() AND $column->get_position() == 'left')
+            {
+                $view->columns->left[$name] = $column;
+            }
+            else if($column->is_edit() AND $column->get_position() == 'right')
+            {
+                $view->columns->right[$name] = $column;
+            }
+        }
+        
         $this->template->content = $view->render();
     }
    
@@ -203,13 +220,29 @@ abstract class Controller_Admin_CRUD extends Controller_System_Admin
         $view->base_controller = $this->base_controller;
         $view->name = $this->controller_name;
         $view->data = $this->model->get_for_edit($id);
-        $view->columns = $this->model->get_items();
+        $view->columns = (object)array
+        (
+            'left' => array(), 
+            'right' => array()
+        );
+
+        foreach($this->model->get_items() as $name => $column)
+        {
+            if($column->is_edit() AND $column->get_position() == 'left')
+            {
+                $view->columns->left[$name] = $column;
+            }
+            else if($column->is_edit() AND $column->get_position() == 'right')
+            {
+                $view->columns->right[$name] = $column;
+            }
+        }
 
         $this->template->content = $view->render();
     }
     
     
-    public function GET_delete()
+    public function action_delete()
     {
         $id = $this->request->param('id');
         
@@ -224,14 +257,21 @@ abstract class Controller_Admin_CRUD extends Controller_System_Admin
     }
     
     
-    public function POST_sort()
+    public function action_delete_many()
     {                
-        $this->response->body(__('Items sorted') . Debug::dump($_POST));
-        
         $this->model->sort_rows($_POST['row']);
 
         $this->auto_render = FALSE;
-        $this->response->body(__('Items sorted'));
+        $this->response->body(__('Items sorted') . Debug::dump($_POST));
+    }
+    
+    
+    public function action_sort()
+    {                
+        $this->model->sort_rows($_POST['row']);
+
+        $this->auto_render = FALSE;
+        $this->response->body(__('Items sorted') . Debug::dump($_POST));
     }
     
     

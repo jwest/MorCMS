@@ -77,7 +77,22 @@ abstract class Controller_System_Admin extends Controller_System_Core {
         $this->template->title = $this->request->controller();
         $this->template->controller = $this->request->controller();
         $this->template->username = Auth::instance()->get_user()->username;
-        $this->template->menu = (isset($menu['default'])) ? $menu['default'] : $menu['default'];
+        
+        $this->template->username = Auth::instance()->get_user()->roles;
+        
+        foreach($menu as $role => $item)
+        {
+            if(Auth::instance()->logged_in($role))
+            {
+                $this->template->menu = $item;
+                break;
+            }
+        }
+        
+        if(empty($this->template->menu))
+        {
+            $this->template->menu = $menu['default'];
+        }
         
         parent::after();
     }

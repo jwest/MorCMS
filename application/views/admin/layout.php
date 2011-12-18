@@ -42,7 +42,7 @@ I18n::$view = 'layout';
       <ul>
         <?php foreach($menu as $name => $url): ?>
             <li><?php echo Html::anchor($url, __($name)) ?></li>
-		<?php endforeach; ?>
+	<?php endforeach; ?>
       </ul>
 
 	  <h1>mor<span>CMS</span></h1>

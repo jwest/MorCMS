@@ -25,52 +25,64 @@ I18n::$view = 'CRUD_'.$name;
     </div>
 
     <form action="#" method="post" enctype="multipart/form-data">
-        
-        <div class="left">
-        <?php foreach($columns as $column): ?>
-        
-            <?php if($column->is_edit() AND $column->get_position() == 'left'): ?>
-                
-                <div class="item">
-                    <div>
-                        <?php echo Form::label($column->get_name(), $column->get_name(), (isset($errors[$column->get_name()])) ? array('style'=>'color:red;') : null )?>
+
+        <?php if(count($columns->left) > 0): ?>
+
+            <div class="left">
+                <div class="container">
+
+                <?php foreach($columns->left as $column): ?>
+
+                    <div class="item">
+                        <div>
+                            <?php echo Form::label($column->get_name(), ( ($column->is_notnull()) ? '* ' : ' ' ).$column->get_name(), (isset($errors[$column->get_name()])) ? array('style'=>'color:red;') : null )?>
+                        </div>
+                        <div>
+                            <?php if($id == null): ?>
+                                <?php echo $column->input_create((!isset($_POST[$column->get_name()])) ? $data[$column->get_name()] : $_POST[$column->get_name()] ); ?>
+                            <?php else: ?>
+                                <?php echo $column->input_edit((!isset($_POST[$column->get_name()])) ? $data[$column->get_name()] : $_POST[$column->get_name()] ); ?>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                    <div>
-                        <?php if($id == null): ?>
-                            <?php echo $column->input_create((!isset($_POST[$column->get_name()])) ? $data[$column->get_name()] : $_POST[$column->get_name()] ); ?>
-                        <?php else: ?>
+
+                <?php endforeach;?>
+
+                </div>
+            </div>
+                    
+        <?php endif;?>
+
+        <?php if(count($columns->right) > 0): ?>
+
+            <div class="right">
+                <div class="container">
+
+                <?php foreach($columns->right as $column): ?>
+
+                    <div class="item">
+                        <div>
+                            <?php echo Form::label($column->get_name(), ( ($column->is_notnull()) ? '* ' : ' ' ).__($column->get_name()), (isset($errors[$column->get_name()])) ? array('style'=>'color:red;') : null )?>
+                        </div>
+                        <div>
                             <?php echo $column->input_edit((!isset($_POST[$column->get_name()])) ? $data[$column->get_name()] : $_POST[$column->get_name()] ); ?>
-                        <?php endif; ?>
+                        </div>
                     </div>
-                </div>
-        
-            <?php endif;?>
-        
-        <?php endforeach;?>
-        </div>
 
-        <div class="right">
-        <?php foreach($columns as $column): ?>
-        
-            <?php if($column->is_edit() AND $column->get_position() == 'right'): ?>
-                
-                <div class="item">
-                    <div>
-                        <?php echo Form::label($column->get_name(), $column->get_name(), (isset($errors[$column->get_name()])) ? array('style'=>'color:red;') : null )?>
-                    </div>
-                    <div>
-                        <?php echo $column->input_edit((!isset($_POST[$column->get_name()])) ? $data[$column->get_name()] : $_POST[$column->get_name()] ); ?>
-                    </div>
-                </div>
-        
-            <?php endif;?>
-        
-        <?php endforeach;?>
-        </div>
+                <?php endforeach;?>
 
-        <input type="submit" name="submit_previous" value="<?php echo __('save and go to grid'); ?>" />
-        <input type="submit" name="submit" value="<?php echo __('save'); ?>" />
-        <input type="submit" name="submit_next" value="<?php echo __('save and add next'); ?>" />
+                </div>
+            </div>
+
+        <?php endif;?>
+
+        <div class="clr"></div>
+        
+        <div class="button-group">
+            <input class="button" type="submit" name="submit_previous" value="<?php echo __('save and go to grid'); ?>" />
+            <input class="button primary" type="submit" name="submit" value="<?php echo __('save'); ?>" />
+            <input class="button" type="submit" name="submit_next" value="<?php echo __('save and add next'); ?>" />
+        </div>
         
     </form>
 </div>

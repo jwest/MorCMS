@@ -14,7 +14,7 @@ I18n::$view = 'CRUD_'.$name;
 </div>
 
 <?php if(count($data) != 0) :?>
-<table class="tpl selectable sortable">
+<table class="tpl selectable <?php echo ($sortable) ? 'sortable' : '' ?>">
     <thead>
         <tr>
             <?php foreach($columns as $column): ?>
@@ -37,7 +37,7 @@ I18n::$view = 'CRUD_'.$name;
     </thead>
     <tbody>
         <?php foreach($data as $id => $row): ?>
-            <tr data-select="false" data-id="<?php echo $id ?>">
+            <tr data-select="false" id="row_<?php echo $id ?>" data-id="<?php echo $id ?>">
                 <?php foreach($row as $item): ?>
                     <td><?php echo $item ?></td>
                 <?php endforeach; ?>

@@ -18,8 +18,8 @@ class Model_Menu extends Model_CRUD
         (           
             CRUD_Item_Text::e('title')->show()->edit()->length(1,100)->notnull(true),
             CRUD_Item_Text::e('title_url')->show()->edit()->length(1,100)->notnull(true),
-            CRUD_Item_ManyToMany::e('pages')->show()->edit()->field('name'),
-            CRUD_Item_Date::e('date')->show()->auto()->format('d.m.Y H:i')->right(),
+            CRUD_Item_ManyToMany::e('pages')->show()->edit()->field('name')->right(),
+            CRUD_Item_Date::e('date')->show()->auto()->format('d.m.Y H:i'),
         );
     }
     

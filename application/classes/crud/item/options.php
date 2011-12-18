@@ -29,10 +29,10 @@ class CRUD_Item_Options extends CRUD_Item
             {
                 $var .= ', ';                
             }
-            
+
             $var .= '\''.$value.'\'';
         }
-        
+            
         $param = array
         (
             'var' => $var,
@@ -51,10 +51,19 @@ class CRUD_Item_Options extends CRUD_Item
     public function values($array)
     {
         $this->item['values'] = $array;                
+        
         return $this;
     }
     
     
+    public function yesno() 
+    {
+        $this->item['values'] = array('yes', 'no');                
+        $this->item['yesno'] = true;
+        
+        return $this;
+    }
+
 }
 
 ?>

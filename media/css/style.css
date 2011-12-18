@@ -1,10 +1,14 @@
+html {
+  overflow: hidden;
+}
 body{
   margin:auto;
-  padding: auto;
   width: 100%;
   font: 11px/20px Tahoma, Verdana, Arial, sans-serif;
   background-color: #eee;  
   color: #000;
+  height: 100%;
+  overflow: auto;
 }
 
 img{
@@ -123,6 +127,7 @@ img{
 
 #content{
   clear: both;
+  margin-bottom:30px;
 }
 
 #content #header{
@@ -176,11 +181,14 @@ img{
 }
 
 #bottom{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     background-color: #333;
     color: #fff;
-    margin-top: 10px;
-    padding: 10px;
+    margin-top: 10px;    
     text-align: right;
+    height: 20px;
 }
 
 #bottom .diary{
@@ -190,4 +198,51 @@ img{
 
 #bottom a{
     color: #fff;
+    margin-right: 10px;
+}
+
+.left{
+    width: 70%;
+    float: left;
+}
+
+.right .container{
+    margin: 10px;
+    background-color: #DDD;
+    padding: 10px;
+    border: 1px solid #CCC;
+}
+
+.left .container{
+    padding: 10px;
+    margin: 10px;
+}
+
+.right .container .item{
+    border-top: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.container .item label{
+    font-weight: bold;
+}
+
+.container .item input,
+.container .item select,
+.container .item textarea{
+    width: 100%;
+    padding: 5px;
+}
+
+.right{
+    width: 30%;
+    float: left;
+}
+
+.item{
+    
+}
+
+.crud-edit .button-group{
+    margin-left: 20px;
 }

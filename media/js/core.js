@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+    var selectable;
     var sortable;
     var option;
     
@@ -15,12 +16,23 @@ $(document).ready(function() {
     $("table.tpl tbody tr:odd").addClass("tpl-bg1");
     $("table.tpl tbody tr:even").addClass("tpl-bg2");
     $("#filters").click(function() {$(".filters").toggle();});   
-    $("#row1").click(function() {$("#row1h").toggle();});
+    
+    $("#row1").click(function() {
+        $("#row1h").toggle();
+    });
+    
     $('.datepicker').datepicker({dateFormat: 'yy-mm-dd'});
       
     $('.selectable tbody tr').click(function(){
         $(this).attr('data-select','true');
         $(this).find('td').toggleClass('selected');
+        selectable = [];
+//        
+//        var fields = $('.selectable tbody tr[data-select="true"]');
+//        for(var i in fields){
+//            selectable.push($(fields[i]).attr('id'));
+//        }
+        //debugger;
     });  
       
     $(".sortable tbody").sortable({
